@@ -1,5 +1,5 @@
 # Contributing
 
 ```shell
-make && ./sidekick.sh --log-format=json --log-level=debug
+make && ./sidekick --log-format=json --log-level=debug
 ```
