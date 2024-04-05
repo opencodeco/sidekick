@@ -1,8 +1,8 @@
-package proxy
+package components
 
 import (
-	"fmt"
 	"io"
+	"log/slog"
 	"net/http"
 )
 
@@ -10,14 +10,14 @@ func Proxy(appPort string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		res, err := http.Get("http://localhost:" + appPort + r.URL.Path)
 		if err != nil {
-			fmt.Println("error fetching", err)
+			slog.Error("error fetching", "err", err)
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
 		defer res.Body.Close()
 		body, err := io.ReadAll(res.Body)
 		if err != nil {
-			fmt.Println("error reading body", err)
+			slog.Error("error reading body", "err", err)
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
