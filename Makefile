@@ -1,5 +1,5 @@
 sidekick: clean
-	go build github.com/opencodeco/sidekick
+	go build -o ./bin/sidekick ./cmd/sidekick
 
 clean:
-	if [ -f sidekick ]; then rm sidekick; fi
+	@if [ -f ./bin/sidekick ]; then rm ./bin/sidekick; fi

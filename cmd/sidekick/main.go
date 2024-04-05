@@ -10,8 +10,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/opencodeco/sidekick/internal/components"
-	"github.com/opencodeco/sidekick/internal/utils"
+	"sidekick/internal/components"
+	"sidekick/internal/utils"
 )
 
 var (
@@ -50,12 +50,14 @@ func main() {
 	slog.Info(fmt.Sprintf("application started at %s", appPort))
 	if err != nil {
 		slog.Error("error running application", "err", err)
+		os.Exit(1)
 	}
 
 	slog.Info(fmt.Sprintf("starting sidekick at %s", port))
 	err = http.ListenAndServe(":"+port, nil)
 	if err != nil {
 		slog.Error("error running sidekick", "err", err)
+		os.Exit(1)
 	}
 }
 
