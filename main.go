@@ -22,12 +22,7 @@ var (
 )
 
 func main() {
-	flag.StringVar(&port, "port", "9601", "sidekick port")
-	flag.StringVar(&appPort, "app-port", "8888", "application port")
-	flag.StringVar(&logFormat, "log-format", "text", "log format")
-	flag.StringVar(&logLevel, "log-level", "info", "log level")
-	flag.Parse()
-
+	parseFlags()
 	utils.SetupLogger(logLevel, logFormat)
 
 	appCmd := exec.Command(flag.Args()[0], flag.Args()[1:]...)
@@ -62,4 +57,12 @@ func main() {
 	if err != nil {
 		fmt.Println("error running sidekick", err)
 	}
+}
+
+func parseFlags() {
+	flag.StringVar(&port, "port", "9601", "sidekick port")
+	flag.StringVar(&appPort, "app-port", "8888", "application port")
+	flag.StringVar(&logFormat, "log-format", "text", "log format")
+	flag.StringVar(&logLevel, "log-level", "info", "log level")
+	flag.Parse()
 }
