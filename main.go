@@ -32,10 +32,7 @@ func main() {
 
 	appCmd := exec.Command(flag.Args()[0], flag.Args()[1:]...)
 
-	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-	})
-
+	http.HandleFunc("/health", components.Health)
 	http.HandleFunc("/", components.Proxy(appPort))
 
 	c := make(chan os.Signal, 2)
