@@ -1,7 +1,7 @@
 {
-    "image": "mcr.microsoft.com/vscode/devcontainers/go",
-    "features": {
-        "ghcr.io/devcontainers/features/php": {}
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
     },
     "mounts": [
         "type=bind,source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,consistency=cached"
