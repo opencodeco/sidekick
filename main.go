@@ -49,13 +49,13 @@ func main() {
 	err := appCmd.Start()
 	slog.Info(fmt.Sprintf("application started at %s", appPort))
 	if err != nil {
-		slog.Error("error running application", err)
+		slog.Error("error running application", "err", err)
 	}
 
 	slog.Info(fmt.Sprintf("starting sidekick at %s", port))
 	err = http.ListenAndServe(":"+port, nil)
 	if err != nil {
-		fmt.Println("error running sidekick", err)
+		slog.Error("error running sidekick", "err", err)
 	}
 }
 
