@@ -10,8 +10,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/opencodeco/sidekick/components"
-	"github.com/opencodeco/sidekick/utils"
+	"github.com/opencodeco/sidekick/internal/components"
+	"github.com/opencodeco/sidekick/internal/utils"
 )
 
 var (
