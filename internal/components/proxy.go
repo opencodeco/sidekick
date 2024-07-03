@@ -8,6 +8,8 @@ import (
 
 func Proxy(appPort string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		slog.Info("proxying request", "path", r.URL.Path)
+
 		res, err := http.Get("http://localhost:" + appPort + r.URL.Path)
 		if err != nil {
 			slog.Error("error fetching", "err", err)
