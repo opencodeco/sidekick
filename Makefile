@@ -1,5 +1,6 @@
-sidekick: clean
-	go build -o ./bin/sidekick ./cmd/sidekick
+sidekick:
+	@go build -o ./bin/sidekick ./cmd/sidekick
 
-clean:
-	@if [ -f ./bin/sidekick ]; then rm ./bin/sidekick; fi
+.PHONY: install
+install:
+	@go install ./cmd/sidekick
