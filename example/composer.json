@@ -1,0 +1,8 @@
+{
+    "require-dev": {
+        "swoole/ide-helper": "^5.1"
+    },
+    "require": {
+        "hyperf/nano": "^2.0"
+    }
+}
